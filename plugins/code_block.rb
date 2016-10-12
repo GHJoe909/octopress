@@ -58,7 +58,7 @@ module Jekyll
         @filetype = $1
         markup = markup.sub(/\s*lang:(\S+)/i,'')
       end
-      if markup =~ CaptionUrlTitle
+      if markup.index('<a href').nil? && markup =~ CaptionUrlTitle
         @file = $1
         @caption = "<figcaption><span>#{$1}</span><a href='#{$2}'>#{$3 || 'link'}</a></figcaption>"
       elsif markup =~ Caption
